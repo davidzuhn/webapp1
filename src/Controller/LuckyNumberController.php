@@ -9,7 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyNumberController extends AbstractController
 {
-    #[Route('/lucky/number')]
+    #[Route('/unlucky/number', name: 'unlucky_number')]
+    #[Route('/lucky/number', name: 'lucky_number')]
     public function number(): Response
     {
         $number = random_int(0,100);
