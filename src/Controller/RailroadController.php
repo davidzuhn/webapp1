@@ -18,12 +18,12 @@ class RailroadController extends \Symfony\Bundle\FrameworkBundle\Controller\Abst
         $entityManager = $doctrine->getManager();
 
         $railroad = new Railroad();
-        $railroad->setName('State Belt Railway of California');
+        $railroad->setName('Central of Minnesota');
 
-        $startDate = new DateTimeImmutable("2015-04-01 UTC+6");
+        $startDate = new DateTimeImmutable("2012-09-1 UTC+6");
         $railroad->setStartDate(DateTime::createFromInterface($startDate));
 
-        $railroad->setOwner('david d zuhn');
+        $railroad->setOwner('Joe Binish');
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($railroad);
