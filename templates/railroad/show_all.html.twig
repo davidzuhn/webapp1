@@ -1,0 +1,24 @@
+{%  extends "base.html.twig" %}
+
+{% block title %}All Railroads{%  endblock title %}
+
+{% block body %}
+    {% if railroads is not empty %}
+        <p>There are {{ count }} railroads in the database.</p>
+        <ul>
+        {% for rr in railroads %}
+          <li>
+            {% if rr.isNotActive %}<strike>{% endif %}
+                  {{  rr.name }}
+            {% if rr.isNotActive %}
+              </strike>
+                  RIP {{  rr.getEndDateString }}
+              {% endif %}
+          </li>
+        {% endfor %}
+        </ul>
+    {%  else  %}
+        <p>Some text {{ text }} went there.</p>
+    {% endif %}
+{% endblock body %}
+

@@ -9,6 +9,7 @@ use App\Entity\Railroad;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Twig\Attribute\Template;
 
 class RailroadController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 {
@@ -34,8 +35,25 @@ class RailroadController extends \Symfony\Bundle\FrameworkBundle\Controller\Abst
         return new Response('Saved new railroad with id '.$railroad->getId());
     }
 
+    #[Route('/railroad/all', name: 'railroad_show_all')]
+    #[Template('railroad/show_all.html.twig')]
+    public function showAllRailroads(ManagerRegistry $doctrine)
+    {
+        $allRailroads = $doctrine->getRepository(Railroad::class)->findAll();
+
+        $text = "<b>This is bold text</b>";
+        return [
+            'railroads' => $allRailroads,
+            'count' => count($allRailroads),
+            'text' => $text,
+        ];
+
+    }
+
+
     #[Route('/railroad/{id}', name: 'railroad_show')]
-    public function showRailroad(ManagerRegistry $doctrine, int $id): Response
+    #[Template('railroad/show.html.twig')]
+    public function showRailroad(ManagerRegistry $doctrine, int $id)
     {
         $railroad = $doctrine->getRepository(Railroad::class)->find($id);
 
@@ -45,8 +63,6 @@ class RailroadController extends \Symfony\Bundle\FrameworkBundle\Controller\Abst
             );
         }
 
-        return $this->render('railroad/show.html.twig',
-            [ 'railroad' => $railroad ]
-        );
+        return [ 'railroad' => $railroad ];
     }
 }
