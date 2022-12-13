@@ -77,10 +77,22 @@ class Railroad
         return $this->end_date;
     }
 
+    public function getEndDateString(): ?string
+    {
+        return $this->end_date->format('m Y');
+    }
+
+
     public function setEndDate(?\DateTimeInterface $end_date): self
     {
         $this->end_date = $end_date;
 
         return $this;
+    }
+
+
+    public function isNotActive(): bool
+    {
+        return !is_null($this->end_date);
     }
 }
