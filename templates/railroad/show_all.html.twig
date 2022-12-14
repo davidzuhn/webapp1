@@ -9,7 +9,7 @@
         {% for rr in railroads %}
           <li>
             {% if rr.isNotActive %}<strike>{% endif %}
-                  {{  rr.name }}
+                  <a href="{{  path('railroad_show', {id: rr.getId}) }}">{{  rr.name }}</a>
             {% if rr.isNotActive %}
               </strike>
                   RIP {{  rr.getEndDateString }}
