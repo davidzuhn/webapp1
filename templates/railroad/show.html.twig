@@ -9,5 +9,10 @@
         <li>Name: {{  railroad.name }}</li>
         <li>Owner: {{  railroad.owner }}</li>
         <li>Start of ops: {{ railroad.startDateString }}</li>
+        {% if railroad.isNotActive %}
+            <li>End of ops: {{ railroad.endDateString }}</li>
+        {% endif %}
     </ul>
+
+    <p><a href="{{  path('railroad_show_all') }}">List of all railroads</a></p>
 {% endblock body %}
