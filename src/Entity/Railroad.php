@@ -62,7 +62,7 @@ class Railroad
 
     public function getStartDateString(): ?string
     {
-        return $this->start_date->format('m d Y');
+        return $this->start_date->format('M Y');
     }
 
     public function setStartDate(\DateTimeInterface $start_date): self
@@ -82,14 +82,12 @@ class Railroad
         return $this->end_date->format('M Y');
     }
 
-
     public function setEndDate(?\DateTimeInterface $end_date): self
     {
         $this->end_date = $end_date;
 
         return $this;
     }
-
 
     public function isNotActive(): bool
     {
