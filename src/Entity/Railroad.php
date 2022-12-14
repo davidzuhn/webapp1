@@ -79,7 +79,7 @@ class Railroad
 
     public function getEndDateString(): ?string
     {
-        return $this->end_date->format('m Y');
+        return $this->end_date->format('M Y');
     }
 
 
